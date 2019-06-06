@@ -25,8 +25,20 @@ const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
 const authRoutes = require('./routes/auth');
 
+const options = {
+    setHeaders: function(res, path, stat) {
+
+        console.log('res..... ', res);
+        console.log('path..... ', path);
+        console.log('stat..... ', stat);
+
+        res.set('Cache-Control', 'max-age=1000');
+
+    }
+};
+
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public'), options));
 app.use(
     session({ 
         secret: 'my_secret', 
