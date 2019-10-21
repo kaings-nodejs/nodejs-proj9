@@ -32,7 +32,7 @@ const options = {
         console.log('path..... ', path);
         console.log('stat..... ', stat);
 
-        res.set('Cache-Control', 'max-age=1000');
+        res.set('Cache-Control', 'max-age=1000');   // set Cache-Control only towards static assets (NOT index.html)
 
     }
 };
