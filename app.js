@@ -76,9 +76,9 @@ app.use(authRoutes);
 
 app.use(errorController.get404);
 
-mongoose.connect(MONGODB_URI)
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true })
 .then(result => {
     console.log(result);
-    app.listen(3000);
+    app.listen(3000, 'localhost');
 })
 .catch(err => {console.log(err)});
